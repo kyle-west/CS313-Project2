@@ -28,13 +28,25 @@ app.get('/', function(request, response) {
 });
 
 /*************************************************************
-* Form processing via the POST method
+*
 *************************************************************/
 app.post('/user/new', function(request, response) {
-   console.log("SERVER CALLED: Create New User");
-   var serialized = JSON.stringify(request.body);
-   console.log(serialized);
    db.user.create(request.body, function (err, data) {
+      if (err) {
+         response.write(err);
+      } else {
+         response.json(data);
+      }
+      response.end();
+   });
+});
+
+/*************************************************************
+*
+*************************************************************/
+app.post('/user/validate', function(request, response) {
+   console.log("VALIDATE");
+   db.user.validate(request.body, function (err, data) {
       if (err) {
          response.write(err);
       } else {
