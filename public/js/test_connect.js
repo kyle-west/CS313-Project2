@@ -6,6 +6,7 @@ var __USER__ = null;
 function test(elem) {
    console.log("RUNNING TEST: " + elem.name);
    var callback = function (data) {
+      
       data = JSON.parse(data);
       document.getElementById(elem.name).innerHTML = JSON.stringify(data);
       if (data.ccode) {

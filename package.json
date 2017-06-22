@@ -1,7 +1,7 @@
 {
-  "name": "postal-rate-calculator",
+  "name": "money-books",
   "version": "0.2.6",
-  "description": "A web application that determines the postage required for a single piece of retail first-class mail.",
+  "description": "A simple Checkbook to keep track of finances",
   "engines": {
     "node": "6.10.2"
   },

@@ -20,6 +20,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 /*************************************************************
 * Configure the default page for the user
 *************************************************************/
