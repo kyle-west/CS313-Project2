@@ -104,7 +104,6 @@ app.post('/transaction/update', function(request, response) {
 *
 *************************************************************/
 app.post('/transaction/delete', function(request, response) {
-   console.log(request.url);
    db.transaction.delete(request.body, function (err, data) {
       if (err) {
          response.write(err);

@@ -13,7 +13,7 @@ CREATE TABLE accounts (
 
 CREATE TABLE users2 (
    id         SERIAL  PRIMARY KEY             NOT NULL,
-   username   VARCHAR(50)  UNIQUE             NOT NULL,
+   username   VARCHAR(255) UNIQUE             NOT NULL,
    password   VARCHAR(255)                    NOT NULL,
    account_id INTEGER REFERENCES accounts(id) NOT NULL
 );
