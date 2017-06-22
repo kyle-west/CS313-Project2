@@ -21,12 +21,47 @@ function test(elem) {
          code = __connection_code__;
       case 1:
          test_new_user(callback, code); break;
-      case 2:
-         test_validate_user(callback);
-      default: notest(callback);
+
+      case 2: test_validate_user(callback); break;
+      case 3: test_post_new_trans(callback); break;
+      case 4: test_retrieve_all_trans(callback); break;
+      case 5: test_update_user_trans(callback); break;
+      case 6: test_delete_user_trans(callback); break;
    }
 }
 
+var trans_count = 1;
+function test_post_new_trans(callback) {
+   var data = {
+      account_id: 1,
+      username: "PERM",
+      amount: -10.00,
+      notes: "TEST transaction " + trans_count
+   };
+   console.log(data);
+   connect("/transaction/create", data, callback);
+}
+
+function test_retrieve_all_trans(callback) {
+   var data = {
+
+   };
+   connect("/transaction/getAll", data, callback);
+}
+
+function test_update_user_trans(callback) {
+   var data = {
+
+   };
+   connect("/transaction/update", data, callback);
+}
+
+function test_delete_user_trans(callback) {
+   var data = {
+
+   };
+   connect("/transaction/delete", data, callback);
+}
 
 function test_new_user(callback, cc) {
    if (!cc) var cce = "";
@@ -38,7 +73,7 @@ function test_new_user(callback, cc) {
       connection_code: cce
    };
 
-   connect("/user/new",data,callback);
+   connect("/user/new", data, callback);
 }
 
 function test_validate_user(callback) {
@@ -46,7 +81,7 @@ function test_validate_user(callback) {
       username: "test"+(user_i-1),
       password: "password"
    };
-   connect("/user/validate",data,callback);
+   connect("/user/validate", data, callback);
 }
 
 function notest(callback) {

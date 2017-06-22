@@ -27,8 +27,30 @@ CREATE TABLE transactions (
    notes      TEXT
 );
 
+INSERT INTO accounts (name, connection_code) VALUES ('PERM Acount', '1234abcd');
+INSERT INTO users2 (username, password, account_id) VALUES
+   ('PERM', 'password', 1),
+   ('PERM2', 'password', 1);
+
+INSERT INTO transactions (account_id, user_id, amount, notes) VALUES
+   (1, 1, 543.21, 'This is the first intitial ballance'),
+   (1, 1, -32.45, 'Walmart'),
+   (1, 2, -11.23, 'Lunch at school'),
+   (1,
+      (SELECT id FROM users2 WHERE username = 'PERM')
+      , 150.00, 'Pay Check'),
+   (1, 1, -15.00, 'Tithing'),
+   (1, 2,  -8.32, 'Taco Bell');
+
+INSERT INTO transactions (account_id, user_id, amount, notes) VALUES
+   (1, (SELECT id FROM users2 WHERE username = 'PERM'), 150.00, 'Pay Check 2')
+   RETURNING id;
 
 -- validate setup
 \d+ accounts;
 \d+ users2;
 \d+ transactions;
+
+SELECT * FROM accounts;
+SELECT * FROM users2;
+SELECT * FROM transactions;
