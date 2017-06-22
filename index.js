@@ -75,14 +75,14 @@ app.post('/transaction/create', function(request, response) {
 *************************************************************/
 app.post('/transaction/getAll', function(request, response) {
    console.log(request.url);
-   // db.transaction.getAll(request.body, function (err, data) {
-   //    if (err) {
-   //       response.write(err);
-   //    } else {
-   //       response.json(data);
-   //    }
-   //    response.end();
-   // });
+   db.transaction.getAll(request.body, function (err, data) {
+      if (err) {
+         response.write(err);
+      } else {
+         response.json(data);
+      }
+      response.end();
+   });
 });
 
 /*************************************************************
@@ -90,14 +90,14 @@ app.post('/transaction/getAll', function(request, response) {
 *************************************************************/
 app.post('/transaction/update', function(request, response) {
    console.log(request.url);
-   // db.transaction.update(request.body, function (err, data) {
-   //    if (err) {
-   //       response.write(err);
-   //    } else {
-   //       response.json(data);
-   //    }
-   //    response.end();
-   // });
+   db.transaction.update(request.body, function (err, data) {
+      if (err) {
+         response.write(err);
+      } else {
+         response.json(data);
+      }
+      response.end();
+   });
 });
 
 /*************************************************************
@@ -105,14 +105,14 @@ app.post('/transaction/update', function(request, response) {
 *************************************************************/
 app.post('/transaction/delete', function(request, response) {
    console.log(request.url);
-   // db.transaction.delete(request.body, function (err, data) {
-   //    if (err) {
-   //       response.write(err);
-   //    } else {
-   //       response.json(data);
-   //    }
-   //    response.end();
-   // });
+   db.transaction.delete(request.body, function (err, data) {
+      if (err) {
+         response.write(err);
+      } else {
+         response.json(data);
+      }
+      response.end();
+   });
 });
 
 /*************************************************************

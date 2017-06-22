@@ -36,29 +36,34 @@ function test_post_new_trans(callback) {
       account_id: 1,
       username: "PERM",
       amount: -10.00,
-      notes: "TEST transaction " + trans_count
+      notes: "TEST transaction " + (trans_count++)
    };
-   console.log(data);
    connect("/transaction/create", data, callback);
 }
 
 function test_retrieve_all_trans(callback) {
    var data = {
-
+      account_id: 1
    };
+   console.log(data);
    connect("/transaction/getAll", data, callback);
 }
 
 function test_update_user_trans(callback) {
    var data = {
-
+      transaction_id: 4,
+      account_id: 1,
+      username: "PERM",
+      amount: 5.55,
+      notes: "Item Was Successfully Edited"
    };
    connect("/transaction/update", data, callback);
 }
 
 function test_delete_user_trans(callback) {
    var data = {
-
+      transaction_id: 5,
+      account_id: 1
    };
    connect("/transaction/delete", data, callback);
 }
