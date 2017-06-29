@@ -5,6 +5,7 @@
       <title>MoneyBook</title>
       <link rel="stylesheet" href="css/master.css"/>
       <link rel="stylesheet" href="css/buttons.css"/>
+      <link rel="stylesheet" href="css/menu.css"/>
       <script type="text/javascript" src = "js/middleware.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script type="text/javascript" src = "js/connect-client.js"></script>
@@ -15,7 +16,12 @@
       <div id = "main">
          <div id = "bar">
             <h2>MoneyBook</h2>
-            <img src = "imgs/menu-white.png" class = "menubtn"/>
+            <img src = "imgs/menu-white.png" class = "menubtn" onclick = 'toggleMenu();'/>
+         </div>
+         <div id = 'menu'>
+            <div id = "mcontent">
+               Menu Content Will Go Here
+            </div>
          </div>
          <div id = "content">
             <div class = "button_row">
@@ -39,7 +45,8 @@
                   </div>
                </div>
 
-
+               <br class = 'whensmall'/>
+               <br class = 'whensmall'/>
                <p id = 'ballance'> Total: </p>
             </div>
             <br/>

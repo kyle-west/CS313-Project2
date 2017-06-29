@@ -4,9 +4,10 @@ body {
    font-family: "Georgia";
 }
 
-#main {
+#main, #menu {
    width: 100%;
    max-width: 650px;
+   min-width: 250px;
    background-color: white;
    margin: auto;
    box-shadow: 3px 3px 2px #888888, 5px 5px 3px #AAA;
@@ -14,7 +15,7 @@ body {
    position: relative;
 }
 
-#content {
+#content, #mcontent {
    padding: 25px 50px 75px 50px;
    width: calc(100% - 100px);
 }
@@ -25,16 +26,34 @@ body {
       margin:0;
       background-color: white;
    }
-   #main {
+   #main, #menu {
       box-shadow: none;
       margin:auto;
    }
+}
+
+br.whensmall {
+   display: none;
 }
 
 @media screen and (max-width: 500px) {
    #content {
       padding: 25px 5px 75px 5px;
       width: calc(100% - 10px);
+   }
+}
+
+@media screen and (max-width: 370px) {
+   #table {
+      font-size: 10pt;
+   }
+   br.whensmall {
+      display: block;
+   }
+}
+@media screen and (max-width: 280px) {
+   #table {
+      font-size: 8pt;
    }
 }
 

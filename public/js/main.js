@@ -109,3 +109,9 @@ function parseDate(yyyymmdd) {
    var d = yyyymmdd.split('-');
    return [d[1],d[2],d[0]].join("/");
 }
+
+
+function toggleMenu() {
+   $('#menu').slideToggle();
+   $('#content').slideToggle();
+}
