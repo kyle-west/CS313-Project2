@@ -75,7 +75,7 @@ function constructTransactionTable(data) {
 
    document.getElementById("table").innerHTML = trans;
    document.getElementById("ballance").innerHTML =
-      "Total: &nbsp;&nbsp;<span class = 'total'>$ " +
+      "Total: &nbsp;&nbsp;<span class = 'total'>$&nbsp;" +
       computeBallance(data).money() + "</span>";
 }
 

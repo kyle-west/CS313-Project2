@@ -63,7 +63,8 @@ function editText(elem, type = 'text') {
       ((type == 'number') ? "step = '0.01'" : "") +
       "onblur = 'change_doc_name(this, this.parentElement);'" +
       "onfocus = 'this.select();'/>";
-   elem.childNodes[0].style.width = "100%";
+   elem.childNodes[0].style.width =
+      ((type == 'text') ? "100%" : "80%");
    elem.childNodes[0].style.backgroundColor = "white";
    elem.childNodes[0].style.textAlign =
       ((type == 'number') ? "right" : "left");
