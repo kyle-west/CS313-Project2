@@ -1,3 +1,5 @@
+const desc_placeholder = "[Double Click to Add a Description]";
+
 /*************************************************************
 *
 *************************************************************/
@@ -48,7 +50,9 @@ window.onkeyup = function(e) {
 function editText(elem, type = 'text') {
    // store text contents of element
    var text = elem.innerText;
-
+   if (text == desc_placeholder) {
+      text = '';
+   }
    // replace the text with an input element.
    elem.innerHTML = "<input type = '"+type+"' class = 'edit_text' " +
       "value = '"+
@@ -90,6 +94,9 @@ function change_doc_name(elem, parent) {
       parent.innerHTML = val;
    } else {
       // ensure no changes were made
+      if (elem.value.trim().length == 0) {
+         original_text = "<span class = 'placeholder'>"+desc_placeholder+"</span>";
+      }
       var val = parent.innerHTML = original_text;
       console.log("NO CHANGES MADE: '" + val + "'");
       esc_out = false;

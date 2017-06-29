@@ -49,16 +49,15 @@ function constructTransactionTable(data) {
       trans += "<tr id = '"+item.id+"' class = '"+
          (evenodd ? "even" : "odd") +"'>";
 
-      // trans += "<td class = 'date'>" +
-      //    (new Date(item.transdate).toLocaleDateString()) +
-      //    "</td>";
-
-
-      trans += "<td class = 'notes'>"+
+      trans += "<td class = 'date'>"+
          "<span ondblclick=\"editText(this,'date');\" data-row-id = '"+item.id+"'>" +
          (new Date(item.transdate).toLocaleDateString()) + "</span></td>";
 
-      trans += "<td class = 'date'>"+
+      if (item.notes == null || item.notes.trim().length == 0) {
+         item.notes = "<span class = 'placeholder'>"+desc_placeholder+"</span>";
+      }
+
+      trans += "<td class = 'notes'>"+
          "<span ondblclick=\"editText(this);\" data-row-id = '"+item.id+"'>" +
          item.notes + "</span></td>";
 
