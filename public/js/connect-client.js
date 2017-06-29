@@ -28,6 +28,7 @@ function loadTable(updateUser = true) {
 
    connect("/transaction/getAll", data, function (data) {
       constructTransactionTable(data);
+      if (updateUser) userconsole("Up to date.",3);
    });
 }
 
@@ -48,16 +49,24 @@ function constructTransactionTable(data) {
       trans += "<tr id = '"+item.id+"' class = '"+
          (evenodd ? "even" : "odd") +"'>";
 
-      trans += "<td class = 'notes'>" +
-         (new Date(item.transdate).toLocaleDateString()) +
-         "</td>";
+      // trans += "<td class = 'date'>" +
+      //    (new Date(item.transdate).toLocaleDateString()) +
+      //    "</td>";
 
-      trans += "<td class = 'notes'>"+item.notes+"</td>";
+
+      trans += "<td class = 'notes'>"+
+         "<span ondblclick=\"editText(this,'date');\" data-row-id = '"+item.id+"'>" +
+         (new Date(item.transdate).toLocaleDateString()) + "</span></td>";
+
+      trans += "<td class = 'date'>"+
+         "<span ondblclick=\"editText(this);\" data-row-id = '"+item.id+"'>" +
+         item.notes + "</span></td>";
 
       item.amount = Number(item.amount);
       trans += "<td class ='amount "+
-         ((item.amount >= 0) ? "pos" : "neg") +
-         "'>" + item.amount.money() + "</td>";
+         ((item.amount >= 0) ? "pos" : "neg") +"'>" +
+         "<span ondblclick=\"editText(this, 'number');\" data-row-id = '"+item.id+"'>" +
+         item.amount.money() + "</span></td>";
 
       trans += "</tr>";
 

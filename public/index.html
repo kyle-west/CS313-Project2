@@ -21,7 +21,7 @@
             <div class = "button_row">
                <div class="button plus left" onclick = "buttons.plus();"
                     id = "plus" title = 'New Transaction'>
-                  <div class="content">
+                  <div class="content" id = 'plus_btn_content'>
                      +
                   </div>
                </div>
@@ -32,21 +32,12 @@
                   </div>
                </div>
 
-
-               <!--  TODO: vvv    remove this   vvv -->
-               <div class="button question left" onclick = "buttons.qa(1);"
-                    id = "help" title = 'QA Post new trans'>
-                  <div class="content">
-                     P
-                  </div>
-               </div>
-               <div class="button question left" onclick = "buttons.qa(2);"
+               <div class="button send left" onclick = "loadTable();"
                     id = "help" title = 'Update trans'>
                   <div class="content">
-                     U
+                     ↻
                   </div>
                </div>
-               <!-- TODO: ^^^   remove this  ^^^ -->
 
 
                <p id = 'ballance'> Total: </p>
@@ -76,7 +67,7 @@
                </span>
                <br/>
                <input type = 'submit' class = 'ok1'  value = "Done"/>
-               <input type = 'button' class = 'cancel' value = "Cancel" onclick="$('#newrow').slideUp();"/>
+               <input type = 'button' class = 'cancel' value = "Cancel" onclick="buttons.plus()"/>
                <hr/>
             </form>
 

@@ -5,7 +5,14 @@ var buttons = {
    plus: function () {
       console.log(" [PLUS]  : ");
       clearNewRowForm();
-      $('#newrow').slideDown();
+      if (this.newrow_open) {
+         $('#newrow').slideUp();
+         document.getElementById('plus_btn_content').innerHTML = "+";
+      } else {
+         $('#newrow').slideDown();
+         document.getElementById('plus_btn_content').innerHTML = "▲";
+      }
+      this.newrow_open = !this.newrow_open;
    },
 
    help: function () {
@@ -14,7 +21,9 @@ var buttons = {
 
    trash: function () {
       console.log(" [TRASH] : ");
-   }
+   },
+
+   newrow_open: false
 }
 
 

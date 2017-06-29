@@ -42,7 +42,7 @@ INSERT INTO transactions (account_id, user_id, amount, notes, transdate) VALUES
    (1,
       (SELECT id FROM users2 WHERE username = 'PERM')
       , 150.00, 'Pay Check', DATE '2017-02-28'),
-   (1, 1, -15.00, 'Tithing', DATE '2016-12-31'),
+   (1, 1, -15.00, null, DATE '2016-12-31'),
    (1, 2,  -8.32, 'Taco Bell', DATE '2017-06-15');
 
 INSERT INTO transactions (account_id, user_id, amount, notes) VALUES
