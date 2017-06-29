@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>MoneyBook</title>
+      <link rel="stylesheet" href="css/master.css"/>
+      <link rel="stylesheet" href="css/buttons.css"/>
+      <script type="text/javascript" src = "js/middleware.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src = "js/connect-client.js"></script>
+      <script type="text/javascript" src = "js/main.js"></script>
+      <script type="text/javascript" src = "js/buttons.js"></script>
+   </head>
+   <body>
+      <div id = "main">
+         <div id = "bar">
+            <h2>MoneyBook</h2>
+            <img src = "imgs/menu-white.png" class = "menubtn"/>
+         </div>
+         <div id = "content">
+            <div class = "button_row">
+               <div class="button plus left" onclick = "buttons.plus();"
+                    id = "plus" title = 'New Transaction'>
+                  <div class="content">
+                     +
+                  </div>
+               </div>
+               <div class="button question left" onclick = "buttons.help();"
+                    id = "help" title = 'Help Menu'>
+                  <div class="content">
+                     ?
+                  </div>
+               </div>
+
+
+               <!--  TODO: vvv    remove this   vvv -->
+               <div class="button question left" onclick = "buttons.qa(1);"
+                    id = "help" title = 'QA Post new trans'>
+                  <div class="content">
+                     P
+                  </div>
+               </div>
+               <div class="button question left" onclick = "buttons.qa(2);"
+                    id = "help" title = 'Update trans'>
+                  <div class="content">
+                     U
+                  </div>
+               </div>
+               <!-- TODO: ^^^   remove this  ^^^ -->
+
+
+               <p id = 'ballance'> Total: </p>
+            </div>
+            <br/>
+
+            <form id = 'newrow' onsubmit="commitRow(); return false;">
+               <hr/>
+               <h3>Please Enter a New Transaction</h3>
+               <span class = 'oneline'>
+                  <label for = 'nr_date'>Date: </label>
+                  <input type = 'date' id = 'nr_date' required = "required"/>
+               </span>
+               <br/>
+               <span class = 'oneline'>
+                  <label for = 'nr_amnt'>Transaction Type/Amount: </label>
+                  <select id = 'nr_type'>
+                     <option value="withdrawl" selected = "selected">Withdrawl</option>
+                     <option value="deposit">Deposit</option>
+                  </select>
+                  <input type = 'number' id = 'nr_amnt' step="0.01" required = "required"/>
+               </span>
+               <br/>
+               <span class = 'oneline'>
+                  <label for = 'nr_note'>Description: </label>
+                  <input type = 'text' id = 'nr_note'></textarea>
+               </span>
+               <br/>
+               <input type = 'submit' class = 'ok1'  value = "Done"/>
+               <input type = 'button' class = 'cancel' value = "Cancel" onclick="$('#newrow').slideUp();"/>
+               <hr/>
+            </form>
+
+            <div id = "userconsole">Connecting to server...</div>
+            <br/>
+            <br/>
+
+            <table id = "table"></table>
+         </div>
+         <script> loadTable(); </script>
+      </div>
+   </body>
+</html>

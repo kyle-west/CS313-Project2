@@ -1,0 +1,140 @@
+div.button_row {
+   width: 100%;
+   margin: auto;
+   margin-top: 25px;
+}
+
+div.plus {
+   background-color: #38cfed;
+   color: white;
+}
+div.plus:hover {
+   background-color: #00a1ff;
+}
+
+div.send {
+   background-color: #eda9fc;
+   color: white;
+}
+div.send:hover {
+   background-color: #df51ff;
+}
+
+div.minus {
+   background-color: #e07272;
+   color: white;
+}
+div.minus:hover {
+   background-color: #f73333;
+}
+
+div.question {
+   background-color: #84bcaf;
+   color: white;
+}
+div.question:hover {
+   background-color: teal;
+}
+
+div.button {
+   width: 50px;
+   height: 50px;
+   border-radius: 25px;
+   text-align: center;
+   font-weight: 600;
+   font-family: "Consolas";
+   font-size: 26pt;
+   cursor: pointer;
+}
+
+.left {
+   float: left;
+   margin-left: 25px;
+}
+
+.right {
+   float: right;
+   margin-right: 25px;
+}
+
+div.button div.content {
+   width: 95%;
+   height: 95%;
+   margin: auto auto;
+   position: relative;
+   top: 2.5%;
+}
+
+div.button div.content img {
+   width: 58%;
+   height: 58%;
+   margin: auto auto;
+   position: relative;
+   top: 8%;
+}
+#send_icon {
+   left: 3px;
+   top: 4%;
+}
+
+.edit_text, .edit_text:hover {
+   color: inherit;
+   width: 50%;
+   background-color: inherit;
+   font-size: inherit;
+   font-family: inherit;
+   font-weight: inherit;
+   text-decoration: none;
+   text-align: center;
+}
+
+.show_on_selected {
+   display: none;
+}
+
+.contains_hidden_button {
+   position: relative;
+}
+.contains_hidden_button .firepeer .content {
+   width: 90%;
+   height: 50%;
+   margin: auto auto;
+   position: relative;
+   bottom: 4px;
+   text-align: center;
+}
+.contains_hidden_button .firepeer{
+   z-index: 5;
+   display:none;
+   position: absolute;
+   width: 18px;
+   height: 18px;
+   border-radius: 8px;
+   text-align: center;
+   font-weight: 600;
+   font-family: "Consolas";
+   font-size: 9pt;
+   top: 30%;
+   right: 3%;
+}
+.contains_hidden_button:hover .firepeer{
+   display: inline-block;
+}
+
+
+/************ GENERICS ************/
+.cancel {
+   background-color: #e07272;
+   color: white;
+}
+.cancel:hover {
+   background-color: #f73333;
+}
+
+.ok1 {
+   background-color: #38cfed;
+   color: white;
+}
+.ok1:hover {
+   background-color: #00a1ff;
+}

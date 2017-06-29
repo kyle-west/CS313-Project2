@@ -1,0 +1,161 @@
+#main {
+   width: 100%;
+   max-width: 650px;
+   background-color: white;
+   margin: auto;
+   box-shadow: 3px 3px 2px #888888, 5px 5px 3px #AAA;
+   border-radius: 3px;
+   position: relative;
+}
+
+@media screen and (max-width: 650px) {
+   body {
+      margin:0;
+   }
+   #main {
+      box-shadow: none;
+      margin:auto;
+   }
+}
+
+#content {
+   padding: 25px 50px 75px 50px;
+   width: calc(100% - 100px);
+}
+
+body {
+   background-color: #CCC;
+   font-size: 13pt;
+   font-family: "Georgia";
+}
+
+#bar {
+   width: calc(100% - 40px);
+   margin: auto;
+   background-color: #326F12;
+   color: white;
+   height: inherit;
+   box-shadow: 0px 3px 3px #AAA;
+   padding: 5px 20px;
+   position: relative;
+}
+
+#bar img.menubtn {
+   height: 1.5em;
+   width: 1.5em;
+   position: absolute;
+   right: 20px;
+   top: calc(1em + 10px);
+   filter: none;
+   cursor: pointer;
+}
+
+#bar img.menubtn:hover {
+   filter: invert(100%);
+}
+
+
+#table {
+   width: 100%;
+   border-collapse: collapse;
+}
+#table thead {
+   background-color: #777;
+   color: white;
+}
+#table th,
+#table td {
+   padding: 10px;
+}
+
+.amount {
+   text-align: right;
+   font-family: "Consolas";
+}
+.pos {
+   color: green;
+}
+.neg {
+   color: red;
+}
+.odd {
+   background-color: #CCC;
+}
+.even {
+   background-color: #EEE;
+}
+
+.price {
+   color: #118811;
+   font-weight: bolder;
+}
+
+#ballance {
+   text-align: right;
+   padding-top: 15px;
+}
+
+#userconsole {
+   color: grey;
+   text-align: right;
+   font-size: 10pt;
+   font-style: italic;
+   display: inline-block;
+   width: 100%;
+   padding: none;
+}
+
+#newrow {
+   width: 100%;
+   display: none;
+}
+
+#newrow h3 {
+   text-align: center;
+}
+
+#newrow input {
+   vertical-align: middle;
+   margin-left: 10px;
+}
+#newrow input[type = 'number'] {
+   text-align: right;
+   font-size: 15pt;
+   width: 100px;
+   padding: 2px;
+}
+#newrow input[type = 'date'] {
+   font-size: 12pt;
+}
+#newrow input[type = 'text'] {
+   width: 75%;
+   height:
+}
+#newrow select {
+   padding: 7px;
+   vertical-align: middle;
+}
+
+#newrow input[type = 'submit'],
+#newrow input[type = 'button'] {
+   margin-left: 0px;
+   margin-top: 10px;
+   width: 100%;
+   font-size: 13pt;
+   padding: 5px;
+   border: none;
+   border-radius: 5px;
+}
+
+.oneline {
+   width: 100%;
+   padding-bottom: 15px;
+   display: inline-block;
+}
+
+.total {
+   font-weight: bold;
+   font-size: 15pt;
+   color: blue;
+   font-family: "Arial";
+}

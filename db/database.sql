@@ -24,6 +24,7 @@ CREATE TABLE transactions (
    account_id INTEGER REFERENCES accounts(id) NOT NULL,
    user_id    INTEGER REFERENCES users2(id)   NOT NULL,
    amount     NUMERIC                         NOT NULL,
+   transdate  DATE                            NOT NULL,
    notes      TEXT
 );
 
@@ -32,17 +33,17 @@ INSERT INTO users2 (username, password, account_id) VALUES
    ('PERM', 'password', 1),
    ('PERM2', 'password', 1);
 
-INSERT INTO transactions (account_id, user_id, amount, notes) VALUES
-   (1, 1, 543.21, 'This is the first intitial ballance'),
-   (1, 1, -32.45, 'Walmart'),
-   (1, 2, -11.23, 'Lunch at school'),
-   (1, 2,   0.00, 'THIS ONE NEEDS TO BE EDITED'),
-   (1, 2,   0.00, 'THIS ONE NEEDS TO BE DELETED'),
+INSERT INTO transactions (account_id, user_id, amount, notes, transdate) VALUES
+   (1, 1, 543.21, 'This is the first intitial ballance', DATE '2015-11-28'),
+   (1, 1, -32.45, 'Walmart', DATE '2017-06-23'),
+   (1, 2, -11.23, 'Lunch at school', DATE '2017-06-25'),
+   (1, 2,   0.00, 'THIS ONE NEEDS TO BE EDITED', DATE '2017-05-18'),
+   (1, 2,   0.00, 'THIS ONE NEEDS TO BE DELETED', DATE '2017-06-24'),
    (1,
       (SELECT id FROM users2 WHERE username = 'PERM')
-      , 150.00, 'Pay Check'),
-   (1, 1, -15.00, 'Tithing'),
-   (1, 2,  -8.32, 'Taco Bell');
+      , 150.00, 'Pay Check', DATE '2017-02-28'),
+   (1, 1, -15.00, 'Tithing', DATE '2016-12-31'),
+   (1, 2,  -8.32, 'Taco Bell', DATE '2017-06-15');
 
 INSERT INTO transactions (account_id, user_id, amount, notes) VALUES
    (1, (SELECT id FROM users2 WHERE username = 'PERM'), 150.00, 'Pay Check 2')
