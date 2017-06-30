@@ -23,12 +23,12 @@ function loadTable(updateUser = true) {
    if (updateUser) userconsole("Loading Data...");
    // TODO: validate user and get actual id
    var data = {
-      account_id: 1
+      account_id: _USER_.account_id
    };
 
    connect("/transaction/getAll", data, function (data) {
       constructTransactionTable(data);
-      if (updateUser) userconsole("Up to date.",3);
+      if (updateUser) userconsole("Up to date.", 5);
    });
 }
 
@@ -42,11 +42,13 @@ function constructTransactionTable(data) {
       "<th>Date</th>" +
       "<th>Description</th>" +
       "<th>Amount</th>" +
+      "<th class = 'delcol'></th>" +
       "</tr></thead><tbody id = 'table_content'>";
 
    var evenodd = false;
    data.rows.forEach(function (item, index) {
       trans += "<tr id = '"+item.id+"' class = '"+
+         (item.active ? "" : "inactiverow ") +
          (evenodd ? "even" : "odd") +"'>";
 
       trans += "<td class = 'date'>"+
@@ -67,6 +69,10 @@ function constructTransactionTable(data) {
          "<span ondblclick=\"editText(this, 'number');\" data-row-id = '"+item.id+"'>" +
          item.amount.money() + "</span></td>";
 
+      trans += "<td class = 'delcol' onclick = 'deleteRow(this.parentElement);' "+
+         "title = " + (item.active ? "Disable" : "Enable") + ">"+
+         (item.active ? "✖" : "✔") + "</td>";
+
       trans += "</tr>";
 
       evenodd = !evenodd;
@@ -85,7 +91,7 @@ function constructTransactionTable(data) {
 function computeBallance(data) {
    var ballance = 0;
    data.rows.forEach((item , index) => {
-      ballance += Number(item.amount);
+      if (item.active) ballance += Number(item.amount);
    });
    return ballance;
 }
@@ -104,8 +110,8 @@ function commitRow(data, updateUser = true) {
 
       // TODO: validate user and get actual id and username
       data = {
-         account_id: 1,
-         username: "PERM",
+         account_id: _USER_.account_id,
+         username: _USER_.username,
          amount: amount,
          notes: document.getElementById('nr_note').value,
          date : document.getElementById('nr_date').value.toString()
@@ -117,7 +123,7 @@ function commitRow(data, updateUser = true) {
       console.log("RESPONSE:\t" + data);
       data = JSON.parse(data);
       if (data.success) {
-         if (updateUser) userconsole("Changes Saved");
+         if (updateUser) userconsole("Changes Saved", 5);
          loadTable(false);
       } else {
          if (updateUser) userconsole("Uable to Connect");
@@ -125,4 +131,54 @@ function commitRow(data, updateUser = true) {
    });
 
    clearNewRowForm();
+}
+
+/*************************************************************
+*
+*************************************************************/
+function updateRow(eTextElem, updateUser = true, elemIsRow = false) {
+   if (updateUser) userconsole("Sending Changes to Sever");
+
+   var row;
+   if (elemIsRow) {
+      row = eTextElem;
+   } else {
+      row = eTextElem.parentElement.parentElement;
+   }
+
+   var data = {
+      transaction_id: row.id,
+      account_id: _USER_.account_id,
+      username: _USER_.username,
+      amount: Number(row.getElementsByClassName('amount')[0].innerText),
+      date: parseLocaleDate(row.getElementsByClassName('date')[0].innerText),
+      notes: row.getElementsByClassName('notes')[0].innerText,
+      active: (!row.classList.contains("inactiverow"))
+   };
+
+   console.log(data);
+   connect("/transaction/update", data, (data) => {
+      console.log("RESPONSE:\t" + data);
+      data = JSON.parse(data);
+      if (data.success) {
+         if (updateUser) userconsole("Changes Saved",5);
+         loadTable(false);
+      } else {
+         if (updateUser) userconsole("Uable to Connect");
+      }
+   });
+}
+
+
+/*************************************************************
+*
+*************************************************************/
+function deleteRow(rowElem, updateUser = true) {
+   if (rowElem.classList.contains("inactiverow")) {
+      rowElem.classList.remove("inactiverow");
+   } else {
+      rowElem.classList.add("inactiverow");
+   }
+
+   updateRow(rowElem, updateUser, true);
 }

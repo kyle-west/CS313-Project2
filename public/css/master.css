@@ -4,10 +4,10 @@ body {
    font-family: "Georgia";
 }
 
-#main, #menu {
+#main, #menu, #helpmenu {
    width: 100%;
    max-width: 650px;
-   min-width: 250px;
+   min-width: 265px;
    background-color: white;
    margin: auto;
    box-shadow: 3px 3px 2px #888888, 5px 5px 3px #AAA;
@@ -26,7 +26,7 @@ body {
       margin:0;
       background-color: white;
    }
-   #main, #menu {
+   #main, #menu, #helpmenu {
       box-shadow: none;
       margin:auto;
    }
@@ -83,7 +83,6 @@ br.whensmall {
    filter: invert(100%);
 }
 
-
 #table {
    width: 100%;
    border-collapse: collapse;
@@ -96,6 +95,7 @@ br.whensmall {
 #table td {
    padding: 10px;
 }
+
 
 .amount {
    text-align: right;
@@ -117,6 +117,33 @@ br.whensmall {
 .price {
    color: #118811;
    font-weight: bolder;
+}
+
+.delcol {
+   background: white;
+   padding: 0px;
+   font-family: "consolas";
+   font-weight: 100;
+   color: white;
+}
+
+tr:hover .delcol {
+   color: lightgrey;
+}
+
+td.delcol:hover {
+   color: red;
+   cursor: pointer;
+   font-weight: 900;
+}
+
+tr.inactiverow td:not(.delcol) {
+   text-decoration: line-through;
+   color : grey;
+}
+
+tr.inactiverow td.delcol:hover {
+   color: green;
 }
 
 #ballance {
@@ -166,7 +193,8 @@ br.whensmall {
 }
 
 #newrow input[type = 'submit'],
-#newrow input[type = 'button'] {
+#newrow input[type = 'button'],
+input.menu {
    margin-left: 0px;
    margin-top: 10px;
    width: 100%;

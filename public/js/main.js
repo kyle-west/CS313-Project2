@@ -93,6 +93,7 @@ function change_doc_name(elem, parent) {
             break;
       }
       parent.innerHTML = val;
+      updateRow(parent);
    } else {
       // ensure no changes were made
       if (elem.value.trim().length == 0) {
@@ -110,8 +111,28 @@ function parseDate(yyyymmdd) {
    return [d[1],d[2],d[0]].join("/");
 }
 
+function parseLocaleDate(mm_dd_yyyy) {
+   var d = mm_dd_yyyy.split('/');
+   return [
+      d[2],
+      ("00"+d[0]).slice(-2),
+      ("00"+d[1]).slice(-2)
+   ].join("-");
+}
 
-function toggleMenu() {
-   $('#menu').slideToggle();
-   $('#content').slideToggle();
+function toggleMenu(menu_id = 'menu') {
+   if (menu_id == 'menu') {
+      if ($('#helpmenu').is(":visible"))
+         $('#helpmenu').slideUp();
+
+      if ($('#menu').is(":visible"))
+         $('#content').slideDown();
+      else {
+         $('#content').slideUp();
+      }
+   } else {
+      $('#content').slideToggle();
+   }
+   
+   $('#' + menu_id).slideToggle();
 }

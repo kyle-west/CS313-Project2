@@ -1,5 +1,10 @@
-#menu {
+#menu, #helpmenu {
    background-color: #95d872;
    color: black;
    display: none;
+}
+
+input.menu {
+   border: 1px solid #326F12;
+   color: black;
 }

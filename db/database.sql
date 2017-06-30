@@ -25,6 +25,7 @@ CREATE TABLE transactions (
    user_id    INTEGER REFERENCES users2(id)   NOT NULL,
    amount     NUMERIC                         NOT NULL,
    transdate  DATE                            NOT NULL,
+   active     BOOLEAN DEFAULT TRUE            NOT NULL,
    notes      TEXT
 );
 
@@ -45,8 +46,8 @@ INSERT INTO transactions (account_id, user_id, amount, notes, transdate) VALUES
    (1, 1, -15.00, null, DATE '2016-12-31'),
    (1, 2,  -8.32, 'Taco Bell', DATE '2017-06-15');
 
-INSERT INTO transactions (account_id, user_id, amount, notes) VALUES
-   (1, (SELECT id FROM users2 WHERE username = 'PERM'), 150.00, 'Pay Check 2')
+INSERT INTO transactions (account_id, user_id, amount, notes, transdate, active) VALUES
+   (1, (SELECT id FROM users2 WHERE username = 'PERM'), 150.00, 'Pay Check 2', DATE '2017-06-24', FALSE)
    RETURNING id;
 
 

@@ -7,6 +7,7 @@
       <link rel="stylesheet" href="css/buttons.css"/>
       <link rel="stylesheet" href="css/menu.css"/>
       <script type="text/javascript" src = "js/middleware.js"></script>
+      <script type="text/javascript" src = "js/authenticate.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script type="text/javascript" src = "js/connect-client.js"></script>
       <script type="text/javascript" src = "js/main.js"></script>
@@ -16,11 +17,23 @@
       <div id = "main">
          <div id = "bar">
             <h2>MoneyBook</h2>
-            <img src = "imgs/menu-white.png" class = "menubtn" onclick = 'toggleMenu();'/>
+            <img src = "imgs/menu-white.png" class = "menubtn" onclick = 'buttons.menu()'/>
          </div>
          <div id = 'menu'>
             <div id = "mcontent">
-               Menu Content Will Go Here
+               <h2>Menu</h2>
+               <p>How Do I add </p>
+               <input type = 'button' class = 'ok1 menu' value = "Logout"
+                      onclick = "" />
+            </div>
+         </div>
+         <div id = 'helpmenu'>
+            <div id = "mcontent">
+               <h2>Help Menu</h2>
+               <p>How Do I add </p>
+               <br/>
+               <input type = 'button' class = 'ok1 menu' value = "Return to App"
+                      onclick = "buttons.help();" />
             </div>
          </div>
          <div id = "content">
@@ -39,7 +52,7 @@
                </div>
 
                <div class="button send left" onclick = "loadTable();"
-                    id = "help" title = 'Update trans'>
+                    id = "help" title = 'Refesh Content'>
                   <div class="content">
                      ↻
                   </div>
@@ -48,8 +61,9 @@
                <br class = 'whensmall'/>
                <br class = 'whensmall'/>
                <p id = 'ballance'> Total: </p>
+               <br/>
+               <div id = "userconsole">Connecting to server...</div>
             </div>
-            <br/>
 
             <form id = 'newrow' onsubmit="commitRow(); return false;">
                <hr/>
@@ -78,7 +92,6 @@
                <hr/>
             </form>
 
-            <div id = "userconsole">Connecting to server...</div>
             <br/>
             <br/>
 
