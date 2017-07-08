@@ -53,6 +53,7 @@ app.post('/app', function(request, response) {
          if (data.valid) {
             request.session.user = request.body.username;
             request.session.account_id = data.account_id;
+            request.session.connection_code = data.connection_code;
             response.sendFile(__dirname + '/private/main.html');
          } else {
             response.render("pages/login", {
@@ -178,6 +179,17 @@ app.post('/transaction/delete', function(request, response) {
       }
       response.end();
    });
+});
+
+/*************************************************************
+*
+*************************************************************/
+app.get('/connection_code', function(request, response) {
+   if (request.session.user) {
+      response.json({connection_code : request.session.connection_code});
+	} else {
+      response.render("pages/login", {error : "Nice Try"});
+   }
 });
 
 /*************************************************************
