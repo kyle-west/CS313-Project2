@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-var _secret_ =  db.util.entropyStr(".SESSION");
+var _secret_ =  "TEST" || db.util.entropyStr(".SESSION");
 app.use(session({
   secret: _secret_,
   resave: false,
@@ -52,6 +52,7 @@ app.post('/app', function(request, response) {
          console.log(data);
          if (data.valid) {
             request.session.user = request.body.username;
+            request.session.account_id = data.account_id;
             response.sendFile(__dirname + '/private/main.html');
          } else {
             response.render("pages/login", {
@@ -116,6 +117,8 @@ app.post('/user/validate', function(request, response) {
 *************************************************************/
 app.post('/transaction/create', function(request, response) {
    console.log(request.url);
+   request.body.account_id = request.session.account_id;
+   request.body.username = request.session.user;
    db.transaction.create(request.body, function (err, data) {
       if (err) {
          response.write(err);
@@ -131,7 +134,9 @@ app.post('/transaction/create', function(request, response) {
 *************************************************************/
 app.post('/transaction/getAll', function(request, response) {
    console.log(request.url);
-   db.transaction.getAll(request.body, function (err, data) {
+   db.transaction.getAll({
+         account_id: request.session.account_id
+      }, function (err, data) {
       if (err) {
          response.write(err);
       } else {
@@ -146,6 +151,8 @@ app.post('/transaction/getAll', function(request, response) {
 *************************************************************/
 app.post('/transaction/update', function(request, response) {
    console.log(request.url);
+   request.body.account_id = request.session.account_id;
+   request.body.username = request.session.user;
    db.transaction.update(request.body, function (err, data) {
       if (err) {
          response.write(err);
@@ -160,6 +167,9 @@ app.post('/transaction/update', function(request, response) {
 *
 *************************************************************/
 app.post('/transaction/delete', function(request, response) {
+   console.log(request.url);
+   request.body.account_id = request.session.account_id;
+   request.body.username = request.session.user;
    db.transaction.delete(request.body, function (err, data) {
       if (err) {
          response.write(err);

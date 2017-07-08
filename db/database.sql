@@ -29,10 +29,13 @@ CREATE TABLE transactions (
    notes      TEXT
 );
 
-INSERT INTO accounts (name, connection_code) VALUES ('PERM Acount', '1234abcd');
+INSERT INTO accounts (name, connection_code) VALUES
+   ('PERM Acount', '1234abcd'),
+   ('PERM3 Acount', 'qwerkgfccvbnbv');
 INSERT INTO users2 (username, password, account_id) VALUES
    ('PERM', 'password', 1),
-   ('PERM2', 'password', 1);
+   ('PERM2', 'password', 1),
+   ('PERM3', 'password', 2);
 
 INSERT INTO transactions (account_id, user_id, amount, notes, transdate) VALUES
    (1, 1, 543.21, 'This is the first intitial ballance', DATE '2015-11-28'),

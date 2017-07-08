@@ -21,12 +21,8 @@ var loadCount = 1;
 function loadTable(updateUser = true) {
    console.log("Loading Data {"+(loadCount++)+"}");
    if (updateUser) userconsole("Loading Data...");
-   // TODO: validate user and get actual id
-   var data = {
-      account_id: _USER_.account_id
-   };
 
-   connect("/transaction/getAll", data, function (data) {
+   connect("/transaction/getAll", {}, function (data) {
       constructTransactionTable(data);
       if (updateUser) userconsole("Up to date.", 5);
    });
@@ -110,8 +106,6 @@ function commitRow(data, updateUser = true) {
 
       // TODO: validate user and get actual id and username
       data = {
-         account_id: _USER_.account_id,
-         username: _USER_.username,
          amount: amount,
          notes: document.getElementById('nr_note').value,
          date : document.getElementById('nr_date').value.toString()
@@ -148,8 +142,6 @@ function updateRow(eTextElem, updateUser = true, elemIsRow = false) {
 
    var data = {
       transaction_id: row.id,
-      account_id: _USER_.account_id,
-      username: _USER_.username,
       amount: Number(row.getElementsByClassName('amount')[0].innerText),
       date: parseLocaleDate(row.getElementsByClassName('date')[0].innerText),
       notes: row.getElementsByClassName('notes')[0].innerText,
