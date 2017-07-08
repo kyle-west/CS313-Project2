@@ -1,0 +1,26 @@
+#content {
+   position: relative;
+}
+
+table.login {
+   width: 90%;
+   margin: auto;
+   max-width: 300px;
+}
+
+.login input {
+   font-size: 12pt;
+   padding: 5px;
+}
+
+#content.login input[type="submit"] {
+   position: absolute;
+   right: 50px;
+   bottom: 50px;
+   width: 75px;
+}
+
+.err1 {
+   text-align: center;
+   color: red;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <title>MoneyBook - Login</title>
+      <link rel="stylesheet" href="css/master.css"/>
+      <link rel="stylesheet" href="css/buttons.css"/>
+      <link rel="stylesheet" href="css/menu.css"/>
+      <link rel="stylesheet" href="css/login.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src = "js/authenticate.js"></script>
+   </head>
+   <body onload="$('#usrn').focus();">
+      <div id = "main">
+         <div id = "bar">
+            <h2>MoneyBook</h2>
+         </div>
+         <!-- onsubmit="return validate_login()" -->
+         <div id = "content" class="login" >
+            <form class="" action="/app" method="post" id ='login_form'>
+               <table class="login">
+                  <tr>
+                     <td><label for="usrn">Username:</label></td>
+                     <td class="right"><input id = "usrn" type="text" name="username" value="" placeholder="you123"></td>
+                  </tr>
+                  <tr>
+                     <td><label for="pass">Password:</label></td>
+                     <td class="right"><input id = "pass" type="password" name="password" value=""></td>
+                  </tr>
+               </table>
+               <p class = "err1"><%= error %></p>
+               <input id = 'logsubbtn' type="submit" name="submit" value="Login">
+            </form>
+         </div>
+      </div>
+      <script>
+         $('#logsubbtn').click(function(evt) {
+            $("login_form").submit();
+            // evt.preventDefault();
+            // var slideContent = function () {
+            //    return $('#content').slideUp().promise();
+            // }
+            //
+            // var sendForm = function () {
+            //    $("login_form").submit();
+            // }
+            //
+            // $.when().then(slideContent).then(sendForm);
+            // return true;
+         });
+      </script>
+   </body>
+</html>
