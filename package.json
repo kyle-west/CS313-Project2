@@ -3,7 +3,7 @@
   "version": "0.2.6",
   "description": "A simple Checkbook to keep track of finances",
   "engines": {
-    "node": "6.10.2"
+    "node": "6.11.1"
   },
   "main": "index.js",
   "scripts": {
