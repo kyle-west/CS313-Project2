@@ -26,7 +26,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-console.log("Session Secret:\n"+ _secret_ + "\n\n");
+console.log("\n\n\nSession Secret:\t"+ _secret_);
 
 
 /*************************************************************
