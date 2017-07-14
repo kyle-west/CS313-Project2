@@ -99,8 +99,8 @@ app.get('/login', function(request, response) {
 /*************************************************************
 *
 *************************************************************/
-app.get('/signup', function(request, response) {
-   response.json({page:"signup"});
+app.post('/signup', function(request, response) {
+   response.json({page:"signup", data:request.body});
 });
 
 /*************************************************************
@@ -122,6 +122,21 @@ app.post('/user/new', function(request, response) {
 *************************************************************/
 app.post('/user/validate', function(request, response) {
    db.user.validate(request.body, function (err, data) {
+      if (err) {
+         response.write(err);
+      } else {
+         response.json(data);
+      }
+      response.end();
+   });
+});
+
+/*************************************************************
+*
+*************************************************************/
+app.post('/user/exists', function(request, response) {
+   console.log(request.url);
+   db.user.exists(request.body, function (err, data) {
       if (err) {
          response.write(err);
       } else {

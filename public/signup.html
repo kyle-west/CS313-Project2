@@ -18,23 +18,35 @@
             <a href = '/login'>Login!</a>
          </div>
          <div id = "content" class="login" >
-            <form class="" action="/signup" method="post" id ='login_form'>
+            <form class="" action="/signup" method="POST" id ='signup_form'
+                  onsubmit="return validate();">
                <table class="login signup">
                   <tr>
                      <td><label for="usrn">Enter a Username:</label></td>
-                     <td class="right"><input id = "usrn" type="text" name="username" value="" placeholder="you123"></td>
+                     <td class="right">
+                        <input id = "usrn" type="text" name="username" value=""
+                               onkeydown="testForUser()" placeholder="you123">
+                     </td>
                   </tr>
                   <tr><td></td><td id = 'err1' class = 'err1'></td></tr>
                   <tr>
                      <td><label for="pass1">Enter a Password:</label></td>
-                     <td class="right"><input id = "pass1" type="password" name="password1" value=""></td>
+                     <td class="right">
+                        <input id = "pass1" type="password" name="password"
+                               onblur = "checkPass(this);" value="">
+                     </td>
                   </tr>
                   <tr>
                      <td><label for="pass2">Confirm Password:</label></td>
-                     <td class="right"><input id = "pass2" type="password" name="password2" value=""></td>
+                     <td class="right">
+                        <input id = "pass2" type="password"
+                               onblur = "checkPass(this);" value="">
+                     </td>
                   </tr>
+                  <tr><td></td><td id = 'errP' class = 'err1'></td></tr>
                </table>
-               <p class = 'secret' onclick = "$('#ccode_input_table').slideDown();">Enter a connection code</p>
+               <p class = 'secret' onclick = "$('#ccode_input_table').slideDown(); $('#ccode_input').focus();">
+                  Enter a connection code</p>
                <div id = 'ccode_input_table' style = "display:none">
                   <table class="login signup">
                      <tr>
