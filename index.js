@@ -100,13 +100,7 @@ app.get('/login', function(request, response) {
 *
 *************************************************************/
 app.post('/signup', function(request, response) {
-   response.json({page:"signup", data:request.body});
-});
-
-/*************************************************************
-*
-*************************************************************/
-app.post('/user/new', function(request, response) {
+   // response.json({page:"signup", data:request.body});
    db.user.create(request.body, function (err, data) {
       if (err) {
          response.write(err);
