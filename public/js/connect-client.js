@@ -174,3 +174,21 @@ function deleteRow(rowElem, updateUser = true) {
 
    updateRow(rowElem, updateUser, true);
 }
+
+function pullConnectionCode() {
+   $.ajax({
+      type: "GET",
+      dataType: "text",
+      url: "/connection_code",
+      success: function (data) {
+         data = JSON.parse(data);
+         document.getElementById('ccode').innerHTML =
+            data.connection_code;
+         $("#inst_ccode").slideDown();
+         $("#ccode").slideDown();
+      },
+      error: function () {
+         userconsole("Lost Connection to Server");
+      }
+   });
+}

@@ -36,6 +36,10 @@ br.whensmall {
    display: none;
 }
 
+.hidden {
+   display: none;
+}
+
 @media screen and (max-width: 500px) {
    #content {
       padding: 25px 5px 75px 5px;

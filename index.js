@@ -88,6 +88,24 @@ app.get('/logout', function(request, response) {
 /*************************************************************
 *
 *************************************************************/
+app.get('/login', function(request, response) {
+   if (request.session.user) {
+      response.sendFile(__dirname + '/private/main.html');
+	} else {
+      response.render("pages/login", {error : ""});
+   }
+});
+
+/*************************************************************
+*
+*************************************************************/
+app.get('/signup', function(request, response) {
+   response.json({page:"signup"});
+});
+
+/*************************************************************
+*
+*************************************************************/
 app.post('/user/new', function(request, response) {
    db.user.create(request.body, function (err, data) {
       if (err) {

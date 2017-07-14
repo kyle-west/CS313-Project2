@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <title>MoneyBook - Login</title>
+      <link rel="stylesheet" href="css/master.css"/>
+      <link rel="stylesheet" href="css/buttons.css"/>
+      <link rel="stylesheet" href="css/menu.css"/>
+      <link rel="stylesheet" href="css/login.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src = "js/authenticate.js"></script>
+   </head>
+   <body onload="$('#usrn').focus();">
+      <div id = "main">
+         <div id = "bar">
+            <h2>MoneyBook</h2>
+            <a href = '/login'>Login!</a>
+         </div>
+         <div id = "content" class="login" >
+            <form class="" action="/signup" method="post" id ='login_form'>
+               <table class="login signup">
+                  <tr>
+                     <td><label for="usrn">Enter a Username:</label></td>
+                     <td class="right"><input id = "usrn" type="text" name="username" value="" placeholder="you123"></td>
+                  </tr>
+                  <tr><td></td><td id = 'err1' class = 'err1'></td></tr>
+                  <tr>
+                     <td><label for="pass1">Enter a Password:</label></td>
+                     <td class="right"><input id = "pass1" type="password" name="password1" value=""></td>
+                  </tr>
+                  <tr>
+                     <td><label for="pass2">Confirm Password:</label></td>
+                     <td class="right"><input id = "pass2" type="password" name="password2" value=""></td>
+                  </tr>
+               </table>
+               <p class = 'secret' onclick = "$('#ccode_input_table').slideDown();">Enter a connection code</p>
+               <div id = 'ccode_input_table' style = "display:none">
+                  <table class="login signup">
+                     <tr>
+                        <td><label for="ccode_input">Connection Code:</label></td>
+                        <td class="right"><input id = "ccode_input" type="text" name="connection_code" value=""/></td>
+                     </tr>
+                  </table>
+                  <br/>
+                  <br/>
+               </div>
+               <input id = 'logsubbtn' type="submit" name="submit" value="Sign Up!">
+            </form>
+         </div>
+      </div>
+      <script>
+      </script>
+   </body>
+</html>

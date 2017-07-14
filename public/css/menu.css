@@ -8,3 +8,21 @@ input.menu {
    border: 1px solid #326F12;
    color: black;
 }
+
+#ccode {
+   text-align: center;
+   color: darkgreen;
+   text-decoration: underline;
+   font-weight: bold;
+   background-color: #AAED87;
+   width: 90%;
+   padding: 10px;
+   margin: auto;
+   display: none;
+}
+.inst {
+   text-align: left;
+   color: darkgreen;
+   text-decoration: none;
+   display: none;
+}
