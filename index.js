@@ -99,13 +99,20 @@ app.get('/login', function(request, response) {
 /*************************************************************
 *
 *************************************************************/
-app.post('/signup', function(request, response) {
+app.get('/signup', function(request, response) {
+   response.render("pages/signup", {error : ""});
+});
+
+/*************************************************************
+*
+*************************************************************/
+app.post('/user/new', function(request, response) {
    // response.json({page:"signup", data:request.body});
    db.user.create(request.body, function (err, data) {
       if (err) {
          response.write(err);
       } else {
-         response.json(data);
+         response.redirect('/login');
       }
       response.end();
    });

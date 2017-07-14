@@ -18,7 +18,7 @@
             <a href = '/login'>Login!</a>
          </div>
          <div id = "content" class="login" >
-            <form class="" action="/signup" method="POST" id ='signup_form'
+            <form class="" action="/user/new" method="POST" id ='signup_form'
                   onsubmit="return validate();">
                <table class="login signup">
                   <tr>
@@ -57,6 +57,7 @@
                   <br/>
                   <br/>
                </div>
+               <p class = "err1"><%= error %></p>
                <input id = 'logsubbtn' type="submit" name="submit" value="Sign Up!">
             </form>
          </div>

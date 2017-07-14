@@ -19,6 +19,7 @@ input.menu {
    padding: 10px;
    margin: auto;
    display: none;
+   word-wrap: break-word;
 }
 .inst {
    text-align: left;
