@@ -58,10 +58,12 @@ function editText(elem, type = 'text') {
       "value = '"+
          ((type == 'date') ?
             new Date(text).toDateInputValue()
+         : (type == 'number') ?
+            text.replace(/,/g, "")
          : text) +
       "' " + "data-original-text = '"+ text +"' " +
       ((type == 'number') ? "step = '0.01'" : "") +
-      "onblur = 'change_doc_name(this, this.parentElement);'" +
+      "onblur = 'updateElement(this, this.parentElement);'" +
       "onfocus = 'this.select();'/>";
    elem.childNodes[0].style.width =
       ((type == 'text') ? "100%" : "80%");
@@ -77,7 +79,7 @@ function editText(elem, type = 'text') {
 * After a user attempts to edit text made changable by the
 * editText function, return the contents to a regular element.
 ***************************************************************/
-function change_doc_name(elem, parent) {
+function updateElement(elem, parent) {
    // store the text originally returned by the server
    var original_text = elem.getAttribute("data-original-text");
    var type = elem.getAttribute("type");
@@ -133,6 +135,6 @@ function toggleMenu(menu_id = 'menu') {
    } else {
       $('#content').slideToggle();
    }
-   
+
    $('#' + menu_id).slideToggle();
 }

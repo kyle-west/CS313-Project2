@@ -2,9 +2,9 @@
 * modules we would like to include
 *************************************************************/
 var express    = require('express');
-var session = require('express-session');
+var session    = require('express-session');
 var bodyParser = require("body-parser");
-var db = require('./lib/connect.js');
+var db         = require('./lib/connect.js');
 
 /*************************************************************
 * Create an express instance of our app.

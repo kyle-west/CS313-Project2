@@ -142,7 +142,7 @@ function updateRow(eTextElem, updateUser = true, elemIsRow = false) {
 
    var data = {
       transaction_id: row.id,
-      amount: Number(row.getElementsByClassName('amount')[0].innerText),
+      amount: Number(row.getElementsByClassName('amount')[0].innerText.replace(/,/g, "")),
       date: parseLocaleDate(row.getElementsByClassName('date')[0].innerText),
       notes: row.getElementsByClassName('notes')[0].innerText,
       active: (!row.classList.contains("inactiverow"))
@@ -153,7 +153,7 @@ function updateRow(eTextElem, updateUser = true, elemIsRow = false) {
       console.log("RESPONSE:\t" + data);
       data = JSON.parse(data);
       if (data.success) {
-         if (updateUser) userconsole("Changes Saved",5);
+         if (updateUser) userconsole("Changes Saved", 5);
          loadTable(false);
       } else {
          if (updateUser) userconsole("Uable to Connect");
@@ -175,6 +175,9 @@ function deleteRow(rowElem, updateUser = true) {
    updateRow(rowElem, updateUser, true);
 }
 
+/*************************************************************
+*
+*************************************************************/
 function pullConnectionCode() {
    $.ajax({
       type: "GET",
