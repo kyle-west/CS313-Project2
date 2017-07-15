@@ -1,6 +1,6 @@
 {
-  "name": "Prove 09",
-  "description": "Postal Rate Calculator",
+  "name": "MoneyBook",
+  "description": "A simple checkbook to keep track of finances",
   "repository": "",
   "logo": "",
   "keywords": ["node", "express", "heroku"],

@@ -1,5 +1,5 @@
 {
-  "name": "money-books",
+  "name": "money-book",
   "version": "0.2.6",
   "description": "A simple Checkbook to keep track of finances",
   "engines": {

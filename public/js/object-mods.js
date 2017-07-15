@@ -1,5 +1,6 @@
 /*************************************************************
 * Add a new function to the native Date object
+* Just another date formatting function.
 * SRC: https://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
 *************************************************************/
 Date.prototype.yyyymmdd = function() {
@@ -14,8 +15,10 @@ Date.prototype.yyyymmdd = function() {
    ].join('-');
 };
 
+
 /*************************************************************
 * Add a new function to the native Date object
+* Formats a date to something that the input tag can deal with.
 * SRC: https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
 *************************************************************/
 Date.prototype.toDateInputValue = (function() {
@@ -27,7 +30,7 @@ Date.prototype.toDateInputValue = (function() {
 
 /*************************************************************
 * Add a new function to the native Number object
-* made by me with some help from
+* Pretty prints a number as money made by me with some help from
 * https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 *************************************************************/
 Number.prototype.money = function () {

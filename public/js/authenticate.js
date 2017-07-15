@@ -1,28 +1,33 @@
-// $('form:eq(0)').on('submit', login_submit);
-function validate_login(evt) {
-   return true;
-}
-
-
+/***************************************************************
+* AJAX request to see if the username given is taken or not.
+***************************************************************/
 function testForUser () {
    var username = document.getElementById('usrn').value;
+
    if (username.length > 0) {
-      console.log("Looking for "+username);
+      console.log("Checking if '" + username + "' is taken.");
       $.ajax({
          type: "POST",
          url: "/user/exists",
          data: {username: username},
+
          success:  function (data) {
             data = JSON.parse(data);
-            console.log(data);
             if (data.exits) {
                document.getElementById('err1').innerHTML = "Username is taken";
-            } else document.getElementById('err1').innerHTML = "";
+            } else {
+               document.getElementById('err1').innerHTML = "";
+            }
+            console.log(data);
          },
+
          dataType: "text"
       });
-   } else document.getElementById('err1').innerHTML = "";
+   } else {
+      document.getElementById('err1').innerHTML = "";
+   }
 }
+
 
 /***************************************************************
 * Check that the passwords match and are at least 8 characters
@@ -52,6 +57,10 @@ function checkPass(elem) {
    return okPass && pass1.value.length != 0;
 }
 
+
+/***************************************************************
+* See if the required parts of our form are filled out.
+***************************************************************/
 function validate () {
    return checkPass() &&
           (document.getElementById('err1').innerHTML.length == 0) &&
