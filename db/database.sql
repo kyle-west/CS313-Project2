@@ -1,7 +1,8 @@
-
+-- Remove tables by dependancies
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS users2;
 DROP TABLE IF EXISTS accounts;
+
 
 CREATE TABLE accounts (
    id              SERIAL       PRIMARY KEY   NOT NULL,
@@ -30,13 +31,12 @@ CREATE TABLE transactions (
 );
 
 -- Seed database
-\i seed.sql
+-- \i seed.sql
 
 -- validate setup
 \d+ accounts;
 \d+ users2;
 \d+ transactions;
-
 SELECT * FROM accounts;
 SELECT * FROM users2;
 SELECT * FROM transactions;
