@@ -20,13 +20,13 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-var _secret_ =  "TEST" || db.util.entropyStr(".SESSION");
+var _secret_ =  db.util.entropyStr(".SESSION");
 app.use(session({
   secret: _secret_,
   resave: false,
   saveUninitialized: true
 }));
-console.log("\n\n\nSession Secret:\t"+ _secret_);
+console.log("Session Secret:\t"+ _secret_);
 
 
 /*************************************************************
@@ -41,7 +41,7 @@ app.get('/', function(request, response) {
 });
 
 /*************************************************************
-*
+* Set up the session. Route to main page, or redirect to login
 *************************************************************/
 app.post('/app', function(request, response) {
    db.user.validate(request.body, function (err, data) {
@@ -65,7 +65,9 @@ app.post('/app', function(request, response) {
 });
 
 /*************************************************************
-*
+* Users will often refresh pages. This GET request to the app
+* allows the user to do so if they have already set up a session.
+* otherwise, route to the login page.
 *************************************************************/
 app.get('/app', function(request, response) {
    if (request.session.user) {
@@ -76,7 +78,7 @@ app.get('/app', function(request, response) {
 });
 
 /*************************************************************
-*
+* Kill the session unconditionally (if exists)
 *************************************************************/
 app.get('/logout', function(request, response) {
 	if (request.session.user) {
@@ -86,7 +88,7 @@ app.get('/logout', function(request, response) {
 });
 
 /*************************************************************
-*
+* Render the Login Screen
 *************************************************************/
 app.get('/login', function(request, response) {
    if (request.session.user) {
@@ -97,17 +99,16 @@ app.get('/login', function(request, response) {
 });
 
 /*************************************************************
-*
+* Render Sign up page
 *************************************************************/
 app.get('/signup', function(request, response) {
    response.render("pages/signup", {error : ""});
 });
 
 /*************************************************************
-*
+* Send the task to the database to add a new user to it.
 *************************************************************/
 app.post('/user/new', function(request, response) {
-   // response.json({page:"signup", data:request.body});
    db.user.create(request.body, function (err, data) {
       if (err) {
          response.write(err);
@@ -119,7 +120,7 @@ app.post('/user/new', function(request, response) {
 });
 
 /*************************************************************
-*
+* Ask the database to validate a username and password match.
 *************************************************************/
 app.post('/user/validate', function(request, response) {
    db.user.validate(request.body, function (err, data) {
@@ -133,10 +134,9 @@ app.post('/user/validate', function(request, response) {
 });
 
 /*************************************************************
-*
+* Ask the database if a username is taken or not
 *************************************************************/
 app.post('/user/exists', function(request, response) {
-   console.log(request.url);
    db.user.exists(request.body, function (err, data) {
       if (err) {
          response.write(err);
@@ -148,10 +148,9 @@ app.post('/user/exists', function(request, response) {
 });
 
 /*************************************************************
-*
+* Post a new transaction to the database.
 *************************************************************/
 app.post('/transaction/create', function(request, response) {
-   console.log(request.url);
    request.body.account_id = request.session.account_id;
    request.body.username = request.session.user;
    db.transaction.create(request.body, function (err, data) {
@@ -165,10 +164,9 @@ app.post('/transaction/create', function(request, response) {
 });
 
 /*************************************************************
-*
+* Ask the database to give us all of a user's transactions
 *************************************************************/
 app.post('/transaction/getAll', function(request, response) {
-   console.log(request.url);
    db.transaction.getAll({
          account_id: request.session.account_id
       }, function (err, data) {
@@ -182,10 +180,9 @@ app.post('/transaction/getAll', function(request, response) {
 });
 
 /*************************************************************
-*
+* Send a task to the database to update a user's transaction.
 *************************************************************/
 app.post('/transaction/update', function(request, response) {
-   console.log(request.url);
    request.body.account_id = request.session.account_id;
    request.body.username = request.session.user;
    db.transaction.update(request.body, function (err, data) {
@@ -199,10 +196,10 @@ app.post('/transaction/update', function(request, response) {
 });
 
 /*************************************************************
-*
+* Remove a whole row from the database. NOT RECOMMENDED.
+* Disable the row an update instead.
 *************************************************************/
 app.post('/transaction/delete', function(request, response) {
-   console.log(request.url);
    request.body.account_id = request.session.account_id;
    request.body.username = request.session.user;
    db.transaction.delete(request.body, function (err, data) {
@@ -216,7 +213,8 @@ app.post('/transaction/delete', function(request, response) {
 });
 
 /*************************************************************
-*
+* Get the connection code so that a use can share it with
+* whom they please.
 *************************************************************/
 app.get('/connection_code', function(request, response) {
    if (request.session.user) {
@@ -230,5 +228,5 @@ app.get('/connection_code', function(request, response) {
 * Initiate our server
 *************************************************************/
 app.listen(app.get('port'), function() {
-   console.log('Node app is running on port', app.get('port'));
+   console.log('MoneyBook app is running on port', app.get('port'));
 });

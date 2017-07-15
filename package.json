@@ -1,6 +1,6 @@
 {
   "name": "money-book",
-  "version": "0.2.6",
+  "version": "1.0",
   "description": "A simple Checkbook to keep track of finances",
   "engines": {
     "node": "6.11.1"
